@@ -2,7 +2,7 @@
   "name": "burger",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "burger.js",
   "scripts": {
     "start": "node js"
   },
