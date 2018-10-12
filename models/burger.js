@@ -1,18 +1,18 @@
-const orm = require('../config/orm');
+const orm = require('../config/orm.js');
 
-const burgers = {
-    all: (cb) => {
-      orm.all("burgers", (res) => {
+const burger = {
+    selectAll: (cb) => {
+      orm.selectAll("burgers", (res) => {
         cb(res);
       });
     },
-    create: (cols, vals, cb) => {
-        orm.create("burgers", cols, vals, (res) => {
+    insertOne: (cols, vals, cb) => {
+        orm.insertOne("burgers", cols, vals, (res) => {
           cb(res);
         });
       },
-      update: (objColVals, condition, cb) => {
-        orm.update("burgers", objColVals, condition, (res) => {
+      updateOne: (objColVals, condition, cb) => {
+        orm.updateOne("burgers", objColVals, condition, (res) => {
           cb(res);
         });
       }
@@ -20,4 +20,4 @@ const burgers = {
 
 
 
-module.exports = burgers;
+module.exports = burger;
