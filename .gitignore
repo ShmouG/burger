@@ -58,5 +58,6 @@ typings/
 .env
 
 # next.js build output
+.next
 .DS_Store
 .vscode
