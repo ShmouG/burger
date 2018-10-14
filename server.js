@@ -7,10 +7,9 @@ const app = express();
 const exphbs = require("express-handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("views"));
-
+app.use(express.static(process.cwd() + '/public'));
 // Parse application body
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Set Handlebars.

@@ -1,43 +1,42 @@
-
-<h1>Not Bob's Burgers</h1>
-
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col s6">
-        {{#each burgers}}
-          {{#unless this.devoured}}
-            <div>
-              <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='burgerAvailable'> {{this.burger_name}}</button>
-              </form>
-            </div>
-          {{/unless}}
-        {{/each}}
-      </div>
-
-      <div class="col s6">
-        {{#each burgers}}
-          {{#if this.devoured}}
-            <div class='burgerEaten'>
-              <div>
-                {{this.burger_name}}
-              </div>
-            </div>
-          {{/if}}
-        {{/each}}
-      </div>
-    </div>
-  </div>
-</main>
-
-<h2>Add A Burger Option</h2>
-
 <div class="row">
-  <div class="col s12">
-    <form action="/burgers" method="POST">
-      <input type="text" id="name" name="burger_name" placeholder="Uber Delicious Burger">
-      <button type="submit" class="addBurgerButton">Add The Burger</button>
-    </form>
+  {{! Burgers to eat}}
+  <div class="col s6 center-align">
+    <ul>
+      {{#each brgr}}
+        {{#unless this.devoured}}
+          <div class="card light-green">
+            <p>
+              {{this.id}}. {{this.burger_name}}
+
+              <form action="update/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="1">
+                <button type="submit" class="waves-effect waves-light btn green z-depth-4">DEVOUR IT!</button>
+              </form>
+  
+            </p>
+          </div>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+
+  {{! Devoured Burgers}}
+  <div class="col s6 center-align">
+    <ul>
+      {{#each brgr}}
+        {{#if this.devoured}}
+          <div class="card light-green lighten-2">
+            <p class="grey-text">
+              {{this.id}}. {{this.burger_name}}
+
+              <form action="delete/{{this.id}}?_method=DELETE" method="POST">
+                <button type="submit" class="waves-effect waves-light btn green z-depth-4">Remove</button>
+              </form>
+            </p>
+          </div>
+        {{/if}}
+      {{/each}}
+    </ul>
   </div>
 </div>
+
