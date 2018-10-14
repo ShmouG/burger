@@ -28,3 +28,4 @@ connection.connect(function(err) {
 
 // Export connection for ORM use
 module.exports = connection;
+

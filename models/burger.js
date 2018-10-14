@@ -1,23 +1,27 @@
 const orm = require('../config/orm.js');
 
-const burger = {
-    selectAll: (cb) => {
-      orm.selectAll("burgers", (res) => {
-        cb(res);
-      });
-    },
-    insertOne: (vals, cb) => {
-        orm.insertOne("burgers", 'burger_name', vals, (res) => {
-          cb(res);
-        });
-      },
-      updateOne: (colVal, conditionVal, cb) => {
-        orm.updateOne('burgers', 'devoured', colVal, 'id', conditionVal, (res) => {
-          cb(res);
-        });
-      }
-    };
+let burger = {
+  // Select all burger table entries
+  selectAll: function(cb) {
+    orm.selectAll('burgers', function(res) {
+      cb(res);
+    });
+  },
 
+  // The variables cols and vals are arrays
+  insertOne: function(cols, vals, cb) {
+    orm.insertOne('burgers', cols, vals, function(res) {
+      cb(res);
+    });
+  },
 
+  // The objColVals is an object specifying columns as object keys with associated values
+  updateOne: function(objColVals, condition, cb) {
+    orm.updateOne('burgers', objColVals, condition, function(res) {
+      cb(res);
+    });
+  }
+};
 
+// Export the database functions for the controller (burgerController.js).
 module.exports = burger;
